@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
 </head>
 <body>
-  <script src="../kiez/cars-friedrichshain-kreuzberg.geojson"></script>
+  <!-- <script src="../kiez/cars-friedrichshain-kreuzberg.geojson"></script> -->
 
 
   <div id="mapid" style="width: 1200px; height: 900px;"></div>
@@ -44,15 +44,22 @@
 };
 
 
-  L.geoJSON(cars, {
-    style: myStyle
-  }).addTo(mymap);
+  // L.geoJSON(cars, {
+  //   style: myStyle
+  // }).addTo(mymap);
 
-  // var geojsonLayer = new L.GeoJSON.AJAX(".i./kiez/cars-friedrichshain-kreuzberg.geojsonhttps://cloud.speakerinnen.space/s/xfDcDTCtJNKTDgq");       
-  // geojsonLayer.addTo(map);
 
+
+$.getJSON("https://raw.githubusercontent.com/tyranja/kiez_cars/main/data/cars-friedrichshain-kreuzberg.geojson", function(data) {
+    L.geoJSON(data.responseJSON, {
+        style: myStyle
+    }).addTo(mymap);
+});
 
 </script>
+
+
+
 
 
 
