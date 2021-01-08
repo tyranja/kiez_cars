@@ -17,7 +17,7 @@
   
 </head>
 <body>
-  <!-- <script src="../kiez/cars-friedrichshain-kreuzberg.geojson"></script> -->
+  <!-- <script src="../kiez/var_cars-friedrichshain-kreuzberg.geojson"></script> -->
 
 
   <div id="mapid" style="width: 1200px; height: 900px;"></div>
@@ -51,7 +51,7 @@
 
 
 $.getJSON("https://raw.githubusercontent.com/tyranja/kiez_cars/main/data/cars-friedrichshain-kreuzberg.geojson", function(data) {
-    L.geoJSON(data.responseJSON, {
+    L.geoJSON(data, {
         style: myStyle
     }).addTo(mymap);
 });
