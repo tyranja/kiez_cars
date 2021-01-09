@@ -8,6 +8,7 @@ and visualize it with [leafletjs](https://leafletjs.com)
 
 
 **to deploy**
+
 `git push heroku main`
 
 
