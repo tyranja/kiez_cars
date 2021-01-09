@@ -17,8 +17,9 @@
   
 </head>
 <body>
-  <!-- <script src="../kiez/var_cars-friedrichshain-kreuzberg.geojson"></script> -->
 
+  <!-- import local file --> 
+  <!-- <script src="../kiez/var_cars-friedrichshain-kreuzberg.geojson"></script> -->
 
   <div id="mapid" style="width: 1200px; height: 900px;"></div>
   
@@ -44,17 +45,42 @@
 };
 
 
+  // show var from local file\
+
   // L.geoJSON(cars, {
   //   style: myStyle
   // }).addTo(mymap);
 
 
+// with filter - show only active cars\
+
+// $.getJSON("https://raw.githubusercontent.com/tyranja/kiez_cars/main/data/cars-friedrichshain-kreuzberg.geojson", function(data) {
+//     L.geoJSON(data, {
+//           filter: function(feature, layer) {
+//         return feature.properties.inMotion;
+//     },
+//         style: myStyle
+//     }).addTo(mymap);
+// });
 
 $.getJSON("https://raw.githubusercontent.com/tyranja/kiez_cars/main/data/cars-friedrichshain-kreuzberg.geojson", function(data) {
     L.geoJSON(data, {
-        style: myStyle
+        style:  function(data) {
+        switch (data.properties.inMotion) {
+          // parked cars = dark red
+            case 0: return {color: "#791c41", "weight": 1,};
+          // driven cars = pink
+            case 1:   return {color: "#FF0084", "weight": 1,};
+        }
+        }
     }).addTo(mymap);
 });
+
+// $.getJSON("https://raw.githubusercontent.com/tyranja/kiez_cars/main/data/cars-friedrichshain-kreuzberg.geojson", function(data) {
+//     L.geoJSON(data, {
+//         style: myStyle
+//     }).addTo(mymap);
+// });
 
 </script>
 
